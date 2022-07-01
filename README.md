@@ -1,3 +1,3 @@
-# Preparation & project setup guide
+# Project setup & training preparation guide
 
 Undergoing to rearrange and re-directory for all files ...
