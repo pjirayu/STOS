@@ -4,6 +4,5 @@ Activity recorded
 - 2022/07/11 Undergoing to rearrange and re-directory for all file ...
 
 All file repository in STOS establishment
-STOS repo
 |- Coming soon
 |-
