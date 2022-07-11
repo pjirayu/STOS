@@ -5,7 +5,4 @@ Activity recorded
 
 All file repository in requirement for training
 STOS
-|-
-|-
-|-
-- Coming soon
+|- Coming soon
