@@ -5,7 +5,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 <ins>Remark</ins> the article is still undergoing in reviewing process
 
 ## Activity recorded
-- 2022/07/11 Undergoing the re-arrange and -directory for all files as to a simpler version ...
+- 2022/07/11 Undergoing the re-directory for all files as to a simpler version
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/)
