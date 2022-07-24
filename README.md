@@ -1,5 +1,8 @@
 # Project setup & training preparation guide
 
+## Introduction
+- This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment for Few-Shot Domain Adaptation** under-reviewing
+
 ## Activity recorded
 - 2022/07/11 Undergoing to re-arrange and -directory for all file as to simpler version ...
 
