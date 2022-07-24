@@ -8,7 +8,14 @@
 - 2022/07/11 Undergoing to re-arrange and -directory for all file as to simpler version ...
 
 ## All file repository in STOS establishment
-- Coming soon
+```python
+STOS
+|-data
+|-models
+|-utils
+dataloader
+main
+```
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/)
