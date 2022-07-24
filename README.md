@@ -1,7 +1,7 @@
 # Project setup & training preparation guide
 
 ## Introduction
-This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment for Few-Shot Domain Adaptation in Industrial-Specialized Employment**<br/>
+This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/>
 ##### <ins>Remark</ins> The article is still undergoing in reviewing process.
 
 ## Activity recorded
