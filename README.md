@@ -2,7 +2,7 @@
 
 ## Introduction
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment for Few-Shot Domain Adaptation**
-Remark: the article is still undergoing in reviewing process
+* Remark: the article is still undergoing in reviewing process
 
 ## Activity recorded
 - 2022/07/11 Undergoing the re-arrange and -directory for all files as to a simpler version ...
