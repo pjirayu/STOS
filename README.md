@@ -12,6 +12,39 @@ This repository contains code for our article **High-Intensified Resemblance and
 
 * **requirements** Python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
 
+### Re-utilize Spectral-CORAL in your demonstration
+* Re-producible or re-implementable is possible by using the following function. The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
+for simple re-structural (b=1) correlation alignment
+##### Note that the testing was conducted with a 3x3 toy covariance running on the CPU implementation. The results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
+```python3
+def simplestrucCORAL(source, target):
+    d = source.data.shape[1]
+    # Stardardization
+    s_ = source - torch.mean(source, 0, keepdim=True)
+    t_ = target - torch.mean(target, 0, keepdim=True)
+    # Normal correlation
+    simple_cov_s = s_ @ s_.t()
+    simple_cov_t = t_ @ t_.t()
+    # Re-structuring (b=1 only)
+    I = torch.eye(int(simple_cov_s.shape[0]))
+    D_s = torch.diag(torch.sub(I, torch.mm(s_, s_.t())))
+    D_t = torch.diag(torch.sub(I, torch.mm(t_, t_.t())))
+    # Correlation matrix with b=1 factor structure
+    cov_s = simple_cov_s + D_s
+    cov_t = simple_cov_t + D_t
+    # Frobenius Norm
+    L2 = torch.mul((cov_s - cov_t), (cov_s - cov_t))
+    mean = torch.mean(L2)
+    loss = mean/(4*d*d)
+    return loss
+```
+for re-structural (With the number of b factors) correlation alignment
+```python3
+def b_structure(source, target):
+    # coming soon
+    return
+```
+
 ## Training
 ###### Remark: The whole training was set at varying-way five-shot training all along.
 
@@ -20,7 +53,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 python main.py --model resnet18 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 31 --C 31 --K 1 --la 1 --att_type n --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
 ```
 
-**Training Spectral-CORAL adaptation task & Attention Orchestration with SoftTriplet classifier (as the proposed STOS)**<br/>
+**Training Spectral-CORAL adaptation task 'n Attention Orchestration with SoftTriplet classifier (as the proposed STOS scheme)**<br/>
 ###### Remark: We set five multiple centers as follows in our hyperparameter setting for batch training.
 ```bash
 python main.py --model resnet18 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 155 --C 31 --K 5 --la 5 --att_type orcat --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
