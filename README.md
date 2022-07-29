@@ -2,7 +2,7 @@
 
 ## Introduction
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/>
-##### <ins>Remark</ins> The article is still undergoing in reviewing process.
+###### <ins>Remark:</ins> The article is still undergoing in reviewing process.
 
 ## Activity recorded
 - 2022/07/11 Undergoing the re-directory for all files as to a simpler version
@@ -16,7 +16,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 * Reproducible or reimplementable is possible by using the regarding function below (To cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
 #### For simple re-structural (b=1) correlation alignment
-##### <ins>Note</ins> the testing was conducted with a 3x3 toy covariance matrices running on the CPU implementation. The results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
+###### <ins>Note that</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
 ```python3
 def simplestrucCORAL(source, target):
     d = source.data.shape[1]
@@ -47,7 +47,7 @@ def b_structure(source, target):
 ```
 
 ## Training
-###### Remark: The whole training was set at varying-way five-shot training all along.
+###### <ins>Remark:</ins> The whole training was set at varying-way five-shot training all along.
 
 **Training Spectral-CORAL adaptation task under vanilla classifier**
 ```bash
@@ -55,7 +55,7 @@ python main.py --model resnet18 --n_epoches 100 --n_target_samples 5 --batch_siz
 ```
 
 **Training Spectral-CORAL adaptation task 'n Attention Orchestration with SoftTriplet classifier (as the proposed STOS scheme)**<br/>
-###### Remark: We set five multiple centers as follows in our hyperparameter setting for batch training.
+###### <ins>Remark:</ins> We set five multiple centers as follows in our hyperparameter setting for batch training.
 ```bash
 python main.py --model resnet18 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 155 --C 31 --K 5 --la 5 --att_type orcat --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
 ```
