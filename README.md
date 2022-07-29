@@ -13,9 +13,9 @@ This repository contains code for our article **High-Intensified Resemblance and
 * **requirements** Python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
 
 ### Re-utilize Spectral-CORAL in your demonstration
-* Re-producible or re-implementable is possible by using the following function. The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
+* Re-producible or re-implementable is possible by using the following function (To cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 for simple re-structural (b=1) correlation alignment
-##### Note that the testing was conducted with a 3x3 toy covariance running on the CPU implementation. The results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
+##### Note that the testing was conducted with a 3x3 toy covariancec matrix running on the CPU implementation. The results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
 ```python3
 def simplestrucCORAL(source, target):
     d = source.data.shape[1]
