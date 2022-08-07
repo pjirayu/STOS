@@ -41,9 +41,57 @@ def simplestrucCORAL(source, target):
 ```
 #### For re-structural (With the number of b factors) correlation alignment
 ```python3
-def b_structure(source, target):
-    # upcoming
-    return
+def b_structure(Cov, order=1):
+  '''
+  Referred to in Borsdorf et al. Computing a Nearest Correlation Matrix with k Factor Structure. 2010.
+  Arg:
+    To minimize cost F; argmin||A - F(X(t-1)) - matmul(X, X.t())||F
+  '''
+  # Initialization
+  iter = 1
+  # A0 = Cov = Cov/torch.trace(Cov)
+  A0 = Cov
+  # Identity matrix
+  I = torch.eye(int(A0.shape[0])).cuda()
+
+  # First factor (k=1)
+  # diag
+  # diag_k1 = torch.diag(torch.sub(I, torch.mm(mean_pop, mean_pop.t())))
+  diag_k1 = torch.diag(A0)
+  #Structural Symmetric Correlation Matrix (A @ k=1)
+  A = A0 + diag_k1
+
+  # iter>=2 ++
+  while iter < order:
+    if order==1: print("break b factor iterative nearest corr"); break
+    iter += 1
+    # b factor iterative structural nearest corr; X(t)
+    A = A + torch.diag(I-A)
+
+  return A
+
+def spectralCORAL(source, target, order=2):
+  d = source.data.shape[1]
+  s_ = source - torch.mean(source, 0, keepdim=True)
+  t_ = target - torch.mean(target, 0, keepdim=True)
+  cov_s = torch.matmul(s_, s_.t())
+  cov_t = torch.matmul(t_, t_.t())
+
+  b_cov_s = b_structure(cov_s, order)
+  b_cov_t = b_structure(cov_t, order)
+
+  # Frobenius Norm
+  # L2
+  L2 = torch.mul((b_cov_s - b_cov_t), (b_cov_s - b_cov_t))
+  mean = torch.mean(L2)
+  # L1
+  #df = A_s - A_t
+  #L1_frobe = torch.sqrt(torch.trace(df.t() @ df))
+  #mean = torch.mean(L1_frobe)
+
+  loss = mean/(4*d*d)
+  
+  return loss
 ```
 
 ## Training
