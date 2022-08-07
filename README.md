@@ -39,7 +39,7 @@ def simplestrucCORAL(source, target):
     loss = mean/(4*d*d)
     return loss
 ```
-#### For re-structural (With the number of b factors) correlation alignment
+#### For re-structural (With the number of b factors) correlation alignment (The fully batch training is upcoming)
 ```python3
 def b_structure(Cov, order=1):
   '''
@@ -49,14 +49,12 @@ def b_structure(Cov, order=1):
   '''
   # Initialization
   iter = 1
-  # A0 = Cov = Cov/torch.trace(Cov)
   A0 = Cov
   # Identity matrix
   I = torch.eye(int(A0.shape[0])).cuda()
 
   # First factor (k=1)
   # diag
-  # diag_k1 = torch.diag(torch.sub(I, torch.mm(mean_pop, mean_pop.t())))
   diag_k1 = torch.diag(A0)
   #Structural Symmetric Correlation Matrix (A @ k=1)
   A = A0 + diag_k1
@@ -80,14 +78,9 @@ def spectralCORAL(source, target, order=2):
   b_cov_s = b_structure(cov_s, order)
   b_cov_t = b_structure(cov_t, order)
 
-  # Frobenius Norm
-  # L2
+  # L2 Frobenius Norm
   L2 = torch.mul((b_cov_s - b_cov_t), (b_cov_s - b_cov_t))
   mean = torch.mean(L2)
-  # L1
-  #df = A_s - A_t
-  #L1_frobe = torch.sqrt(torch.trace(df.t() @ df))
-  #mean = torch.mean(L1_frobe)
 
   loss = mean/(4*d*d)
   
