@@ -53,13 +53,13 @@ def b_structure(Cov, order=1):
   # Identity matrix
   I = torch.eye(int(A0.shape[0])).cuda()
 
-  # First factor (k=1)
+  # First factor (b=1)
   # diag
-  diag_k1 = torch.diag(A0)
-  #Structural Symmetric Correlation Matrix (A @ k=1)
-  A = A0 + diag_k1
+  diag_b1 = torch.diag(A0)
+  #Structural Symmetric Correlation Matrix (A @ b=1)
+  A = A0 + diag_b1
 
-  # iter>=2 ++
+  # b factor>=2
   while iter < order:
     if order==1: print("break b factor iterative nearest corr"); break
     iter += 1
