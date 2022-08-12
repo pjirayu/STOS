@@ -6,7 +6,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 
 ## Activity recorded
 - 2022/07/11 - All files is under preparation.
-- 2022/08/12 - The full batch training is upcoming.
+- 2022/08/12 - All techniques and networks in this study are available (the full batch training is upcoming).
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/)
@@ -14,7 +14,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 * **requirements** Python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
 
 ### To utilize Spectral-CORAL in your demonstration
-* Reproducible or reimplementable is possible by using the regarding function below (To cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
+* Reproducible or reimplementable is possible by using the regarding function below (to cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
 #### For simple re-structural (b=1) correlation alignment
 ###### <ins>Note that</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
