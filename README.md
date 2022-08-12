@@ -5,7 +5,8 @@ This repository contains code for our article **High-Intensified Resemblance and
 ###### <ins>Remark:</ins> The article is still undergoing in reviewing process.
 
 ## Activity recorded
-- 2022/07/11 Undergoing the re-directory for all files as to a simpler version
+- 2022/07/11 - All files is under preparation.
+- 2022/08/12 - The full batch training is upcoming.
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/)
@@ -39,7 +40,7 @@ def simplestrucCORAL(source, target):
     loss = mean/(4*d*d)
     return loss
 ```
-#### For re-structural (With the number of b factors) correlation alignment (The fully batch training is upcoming)
+#### For re-structural (With the number of b factors) correlation alignment
 ```python3
 def b_structure(Cov, order=1):
   '''
