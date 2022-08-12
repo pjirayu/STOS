@@ -55,7 +55,7 @@ def b_structure(Cov, order=1):
 
   # First factor (b=1)
   # diag
-  diag_b1 = torch.diag(A0)
+  diag_b1 = torch.diag(I-A0)
   #Structural Symmetric Correlation Matrix (A @ b=1)
   A = A0 + diag_b1
 
