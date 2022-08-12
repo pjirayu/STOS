@@ -9,7 +9,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 - 2022/08/12 - All techniques and networks in this study are available (the full batch training is upcoming).
 
 ## Setup
-* **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/)
+* **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
 
 * **requirements** Python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
 
