@@ -6,7 +6,8 @@ This repository contains code for our article **High-Intensified Resemblance and
 
 ## Activity recorded
 - 2022/07/11 - All files is under preparation.
-- 2022/08/12 - All techniques and networks in this study are available (the full batch training is upcoming).
+- 2022/08/12 - All techniques and networks in this study are available.
+- 2022/08/14 - Pre-release of the batch training in adaptation task.
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
