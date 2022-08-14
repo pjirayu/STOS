@@ -13,6 +13,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
 
 * **requirements** python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
+###### <ins>Note</ins> The considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
 
 ### To utilize Spectral-CORAL in your demonstration
 * Reproducible or reimplementable is possible by using the regarding function below (to cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
