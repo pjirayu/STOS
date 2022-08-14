@@ -99,7 +99,7 @@ python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_siz
 ```
 
 **Training Spectral-CORAL adaptation task 'n Attention Orchestration with SoftTriplet classifier (as the proposed STOS scheme)**<br/>
-###### <ins>Remark:</ins> We set five multiple centers as follows in our hyperparameter setting of article paper for batch training.
+###### <ins>Remark:</ins> We set five multiple centers as follows in our hyperparameter setting of our published article for batch training.
 ```bash
 python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 155 --C 31 --K 5 --la 5 --att_type orcat --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
 ```
