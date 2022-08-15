@@ -89,15 +89,10 @@ def amazon_dataloader(batch_size=16, image_size=224):
             dataset=datasets.ImageFolder('data/office31/amazon/images',
                         transform=transforms.Compose([
                             transforms.Resize((image_size, image_size)),
-                            #transforms.Grayscale(),
-                            #transforms.RandomHorizontalFlip(0.5),
-                            #transforms.RandomVerticalFlip(0.5),
-                            #transforms.LinearTransformation(torch.randn((3*224*224,3*224*224)), torch.randn(3*224*224)),
                             transforms.ToTensor(),
                             transforms.Normalize([0.79235075407833078, 0.78620633471295642, 0.78417965306916637], [0.27691643643313618, 0.28152348841965347, 0.28287296762830788])   #amazon
                             #transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])       #ImageNet
                             #transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])      #for gemeral normalized color image
-                            #transforms.Normalize([0.5],[0.5]),      #for normalized grayscale image
                         ])),
         batch_size=batch_size, shuffle=True)
 
@@ -108,15 +103,10 @@ def webcam_dataloader(batch_size=16, image_size=224):
             dataset=datasets.ImageFolder('data/office31/webcam/images',
                         transform=transforms.Compose([
                             transforms.Resize((image_size, image_size)),
-                            #transforms.Grayscale(),
-                            #transforms.RandomHorizontalFlip(0.5),
-                            #transforms.RandomVerticalFlip(0.5),
-                            #transforms.LinearTransformation(torch.randn((3*224*224,3*224*224)), torch.randn(3*224*224)),
                             transforms.ToTensor(), 
                             transforms.Normalize([0.61197983011509638, 0.61876474000372972, 0.61729662103473015], [0.22763857108616978, 0.23339382150450594, 0.23722725519031848])       #webcam
                             #transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])       #ImageNet
                             #transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])      #for general normalized color image
-                            #transforms.Normalize([0.5],[0.5]),      #for normalized grayscale image
                         ])),
         batch_size=batch_size, shuffle=True)
 
@@ -127,10 +117,6 @@ def dslr_dataloader(batch_size=16, image_size=224):
             dataset=datasets.ImageFolder('data/office31/dslr/images',
                         transform=transforms.Compose([
                             transforms.Resize((image_size, image_size)),
-                            #transforms.Grayscale(),
-                            #transforms.RandomHorizontalFlip(0.5),
-                            #transforms.RandomVerticalFlip(0.5),
-                            #transforms.LinearTransformation(torch.randn((3*224*224,3*224*224)), torch.randn(3*224*224)),
                             transforms.ToTensor(),
                             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])      #ImageNet
                             #transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])      #for general normalized color image
@@ -144,10 +130,6 @@ def synthetic_dataloader(batch_size=16, image_size=224):
             dataset=datasets.ImageFolder('data/office31/synthetic/images',
                         transform=transforms.Compose([
                             transforms.Resize((image_size, image_size)),
-                            #transforms.Grayscale(),
-                            #transforms.RandomHorizontalFlip(0.5),
-                            #transforms.RandomVerticalFlip(0.5),
-                            #transforms.LinearTransformation(torch.randn((3*224*224,3*224*224)), torch.randn(3*224*224)),
                             transforms.ToTensor(),
                             transforms.Normalize([0.485, 0.456, 0.406], [0.229, 0.224, 0.225])      #ImageNet
                             #transforms.Normalize([0.5, 0.5, 0.5],[0.5, 0.5, 0.5])      #for general normalized color image
@@ -181,11 +163,6 @@ def sample_data_office31(mode="amazon", image_size=224):
     dataset=datasets.ImageFolder(path,
                     transform=transforms.Compose([
                         transforms.Resize((image_size,image_size)),
-                        #transforms.Grayscale(),
-                        #transforms.RandomHorizontalFlip(0.5),
-                        #transforms.RandomVerticalFlip(0.5),
-                        #transforms.ColorJitter(brightness=0.5, contrast=0, saturation=6, hue=0),
-                        #transforms.RandomAdjustSharpness(sharpness_factor=10,),     #p=0.5
                         transforms.ToTensor(),
                         transforms.Normalize(mean, std)
                     ]))
@@ -227,11 +204,6 @@ def create_few_samples_office31(n=1, mode="webcam", image_size=224):            
     dataset=datasets.ImageFolder(path,
                 transform=transforms.Compose([
                     transforms.Resize((image_size,image_size)),
-                    #transforms.RandomHorizontalFlip(0.5),
-                    #transforms.RandomVerticalFlip(0.5),
-                    #transforms.Grayscale(),
-                    #transforms.ColorJitter(brightness=0.5, contrast=0, saturation=6, hue=0),
-                    #transforms.RandomAdjustSharpness(sharpness_factor=10),
                     transforms.ToTensor(),
                     transforms.Normalize(mean, std)
                 ]))
@@ -293,39 +265,24 @@ def create_groups_office31(X_s,Y_s,X_t,Y_t,seed=1):
     G1, G2, G3, G4 = [], [], [], []
     Y1, Y2, Y3, Y4 = [], [], [], []
 
-    #---result---
-    #G1, G1 the best result
-    #G1, G3 worse
-    #------------
-
     #i = random.randint(1,31)
     # varying-way k-shot
     for i in range(31):     #default: range=31
         for j in range(shot):
-            #G1: a pair of pic comes from same domain ,same class
-            #G1.append((X_s[source_matrix[i][j*2]],X_s[source_matrix[i][j*2+1]]))
-            #Y1.append((Y_s[source_matrix[i][j*2]],Y_s[source_matrix[i][j*2+1]]))
 
             #G1: a pair of pic comes from same domain ,same class
             G1.append((X_s[source_matrix[i][j]],X_t[target_matrix[i][j]]))
             Y1.append((Y_s[source_matrix[i][j]],Y_t[target_matrix[i][j]]))
 
             #G2: a pair of pic comes from different domain,same class
-            #G2.append((X_s[source_matrix[i][j]],X_t[target_matrix[i][j]]))
-            #Y2.append((Y_s[source_matrix[i][j]],Y_t[target_matrix[i][j]]))
-            #G2+: a pair of pic comes from only target domain,same class
             G2.append((X_s[source_matrix[i][j]],X_s[source_matrix[i][j]]))
             Y2.append((Y_s[source_matrix[i][j]],Y_s[source_matrix[i][j]]))
 
             #G3: a pair of pic comes from same domain, different classes
-            #G3.append((X_s[source_matrix[i % 31][j]],X_s[source_matrix[(i+1) % 31][j]]))
-            #Y3.append((Y_s[source_matrix[i % 31][j]],Y_s[source_matrix[(i+1) % 31][j]]))
             G3.append((X_s[source_matrix[(i+1) % 31][j]],X_t[target_matrix[i % 31][j]]))
             Y3.append((Y_s[source_matrix[(i+1) % 31][j]],Y_t[target_matrix[i % 31][j]]))
 
             #G4: a pair of pic comes from different domain, different classes
-            #G4.append((X_s[source_matrix[i % 31][j]],X_t[target_matrix[(i+1) % 31][j]]))
-            #Y4.append((Y_s[source_matrix[i % 31][j]],Y_t[target_matrix[(i+1) % 31][j]]))
             G4.append((X_s[source_matrix[i % 31][j]],X_t[target_matrix[i % 31][j]]))
             Y4.append((Y_s[source_matrix[i % 31][j]],Y_t[target_matrix[i % 31][j]]))
 
