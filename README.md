@@ -3,6 +3,7 @@
 ## Introduction
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/>
 ###### <ins>Remark:</ins> The article is still undergoing in reviewing process.
+###### <ins>Note</ins> all of this material is purely educational. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration.
 
 ## Activity recorded
 - 2022/07/11 - All files is under preparation.
@@ -13,13 +14,13 @@ This repository contains code for our article **High-Intensified Resemblance and
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
 
 * **requirements** python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
-###### <ins>Note</ins> The considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
+###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
 
 ### To utilize Spectral-CORAL in your demonstration
 * Reproducible or reimplementable is possible by using the regarding function below (to cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
 #### For simply re-structural (b=1) correlation alignment
-###### <ins>Note that</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
+###### <ins>Note</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
 ```python3
 def simplestrucCORAL(source, target):
     d = source.data.shape[1]
@@ -83,9 +84,9 @@ def spectralCORAL(source, target, order=2):
 ```
 
 ## Training
-###### <ins>Remark:</ins> The initial state and whole training was set the initial state at varying-way five-shot training all along.
 
 **Training Spectral-CORAL adaptation task under vanilla classifier**
+###### <ins>Remark:</ins> The initial state and whole training was set the initial state at varying-way five-shot training all along.
 ```bash
 python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 31 --C 31 --K 1 --la 1 --att_type n --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
 ```
