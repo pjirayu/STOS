@@ -6,7 +6,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 ###### <ins>Note</ins> all of this material is purely educational. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration.
 
 ## Activity recorded
-- 2022/07/11 - All realted files are under preparation.
+- 2022/07/11 - All related files are under preparation.
 - 2022/08/12 - All techniques and networks in this study are available.
 - 2022/08/14 - Pre-release of the batch training in adaptation task.
 - 2022/08/26 - Apache License 2.0 is included in this resource repository
