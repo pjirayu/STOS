@@ -18,7 +18,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 ###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
 
 ### To utilize Spectral-CORAL and other related resources in the demonstration
-* Reproducible or reimplementable is by using the regarding function below and the provided information in all folders (please read the license and policy, open and/or discuss the issues with us, and cite our paper). 
+* Reproducible or reimplementable is by using the regarding function and any information in this repo (please read the license and policy, open and/or discuss the issues with us, and cite our paper). 
 * Once, the below exemplary algorithm is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
 #### For simply re-structural (b=1) correlation alignment
