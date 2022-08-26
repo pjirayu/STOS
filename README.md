@@ -48,11 +48,7 @@ def simplestrucCORAL(source, target):
 #### For re-structural (With the number of b factors) correlation alignment
 ```python3
 def b_structure(Cov, order=1):
-  '''
-  Arg:
-    Referred to in Borsdorf et al. Computing a Nearest Correlation Matrix with k Factor Structure. 2010.
-  '''
-  # Initialization
+  # Initial
   iter = 1
   A0 = Cov
   # Identity matrix
