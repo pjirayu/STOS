@@ -9,6 +9,7 @@ This repository contains code for our article **High-Intensified Resemblance and
 - 2022/07/11 - All files is under preparation.
 - 2022/08/12 - All techniques and networks in this study are available.
 - 2022/08/14 - Pre-release of the batch training in adaptation task.
+- 2022/08/26 - Apache License 2.0 is included in this resource repository
 
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
@@ -63,7 +64,7 @@ def b_structure(Cov, order=1):
   A = A0 + diag_b1
   # b factor>=2
   while iter < order:
-    if order==1: print("break b factor iterative nearest corr"); break
+    if order==1: print("break b factor iterative re-patterning corr if b==1"); break  # double-check for breaking iterative corr
     iter += 1
     # b factor iterative structural nearest corr; X(t)
     A = A + torch.diag(I-A)
