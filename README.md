@@ -16,8 +16,8 @@ This repository contains code for our article **High-Intensified Resemblance and
 * **requirements** python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
 ###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
 
-### To utilize Spectral-CORAL in your demonstration
-* Reproducible or reimplementable is possible by using the regarding function below (to cite this approach, the original article is under review). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
+### To utilize Spectral-CORAL and other related resources in the demonstration
+* Reproducible or reimplementable is by using the regarding function below and the provided information in all folders (please open and/or discuss the issues with us and cite our paper). The computation is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
 #### For simply re-structural (b=1) correlation alignment
 ###### <ins>Note</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
