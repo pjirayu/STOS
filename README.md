@@ -1,7 +1,7 @@
 # Project setup & training preparation guide
 
 ## Introduction
-This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [article](https://ieeexplore.ieee.org/document/10045719)
+This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> If you find this method helpful please cite us. [article](https://ieeexplore.ieee.org/document/10045719)
 ###### <ins>Note</ins> all of this material is purely educational. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration.
 
 ## Setup
@@ -89,7 +89,7 @@ python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_siz
 ```
 
 ## Activity recorded
-- 2022/02/16 - Article pre-released (Early access)
+- 2023/02/16 - Article pre-released (Early access)
 - 2022/07/11 - All related files are under preparation.
 - 2022/08/12 - All techniques and networks in this study are available.
 - 2022/08/14 - Pre-release of the batch training in adaptation task.
