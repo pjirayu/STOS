@@ -4,12 +4,6 @@
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [article](https://ieeexplore.ieee.org/document/10045719)
 ###### <ins>Note</ins> all of this material is purely educational. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration.
 
-## Activity recorded
-- 2022/07/11 - All related files are under preparation.
-- 2022/08/12 - All techniques and networks in this study are available.
-- 2022/08/14 - Pre-release of the batch training in adaptation task.
-- 2022/08/26 - Apache License 2.0 is included in this resource repository
-
 ## Setup
 * **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
 
@@ -93,3 +87,10 @@ python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_siz
 ```bash
 python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_size 31 --mini_batch_size_g_h 31 --data_type office31 --source amazon --target webcam --dim 155 --C 31 --K 5 --la 5 --att_type orcat --tf_inv_loss spectralcoral --robust_order 6 --metatest n --mutation r --mutation_style mixup --alpha_mix 0.2 --da_type UDA
 ```
+
+## Activity recorded
+- 2022/02/16 - Article pre-released (Early access)
+- 2022/07/11 - All related files are under preparation.
+- 2022/08/12 - All techniques and networks in this study are available.
+- 2022/08/14 - Pre-release of the batch training in adaptation task.
+- 2022/08/26 - Apache License 2.0 is included in this resource repository
