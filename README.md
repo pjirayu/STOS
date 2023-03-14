@@ -75,7 +75,6 @@ def spectralCORAL(source, target, order=2):
 ```
 
 ## Training
-
 **Training Spectral-CORAL adaptation task under vanilla classifier**
 ###### <ins>Remark:</ins> The initial state and whole training was set the initial state at varying-way five-shot training all along.
 ```bash
@@ -94,3 +93,14 @@ python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_siz
 - 2022/08/12 - All techniques and networks in this study are available.
 - 2022/08/14 - Pre-release of the batch training in adaptation task.
 - 2022/08/26 - Apache License 2.0 is included in this resource repository
+
+## Citation
+```
+@article{petchhan2023high,
+  title={High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment},
+  author={Petchhan, Jirayu and Su, Shun-Feng},
+  journal={IEEE Transactions on Consumer Electronics},
+  year={2023},
+  publisher={IEEE}
+}
+```
