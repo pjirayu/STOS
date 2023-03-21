@@ -75,7 +75,7 @@ def CORALloss(source, target):
     return loss
 
 
-#---log-coral loss---///the worst result///
+#---log-coral loss---
 #converted torch version
 def LogCORALloss(src,tgt):
     d = src.size(1)
@@ -303,7 +303,7 @@ def IterCORALloss(source: torch.tensor,
 #*******************************************************************************************************
 '''
     Arg:
-        J. Petchhan and S.-F. Su. High-intensified resemblance & Statistic-Restructured Alignment for Few-Shot DA. in IEEE TCE, 2022.
+        J. Petchhan and S.-F. Su., "High-Intensified Resemblance & Statistic-Restructured Alignment in Few-Shot Domain adaptation for Industrial-Specialized Employment", in IEEE Trans. Consumer Electronics, 2023.
 '''
 #-------------------------------------------------------------------------------------------------------
 #Simple (k=1 only) the nearest correlation matrix with factor structure
