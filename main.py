@@ -450,26 +450,27 @@ for epoch in tqdm.tqdm(range(opt['n_epoches'])):
 
             elif opt['tf_module_loss']=='mdd':
                 #---one-hot transformation by prediction vector
-                y_max_X1 = torch.max(y_pred_X1, 1)[1]
-                y_max_X2 = torch.max(y_pred_X2, 1)[1]
-                y_pred_X1_onehot = utils.onehotembedding(y_max_X1, num_classes=y_max_X1.data.shape[0]).to(device)
-                y_pred_X2_onehot = utils.onehotembedding(y_max_X2, num_classes=y_max_X2.data.shape[0]).to(device)
-                #---domain classification
-                s_domain_output = domain_critic(enc_X1_flattened, alpha_weight)
-                t_domain_output = domain_critic(enc_X2_flattened, alpha_weight)
-                _, s_domain_pred = s_domain_output.max(dim=1)   # [n_classes]
-                _, t_domain_pred = t_domain_output.max(dim=1)
-                #---tf_module_loss (pred one-hot as label <--> fully class-domain vector)
-                loss_s_domain = loss_fn(y_pred_X1_onehot,
-                                        s_domain_pred
-                                        )
-                log_t_domain_label = torch.log(torch.clamp(1. - F.softmax(y_pred_X2_onehot, dim=1), max=1.))
+                y_max_src = torch.argmax(y_pred_X1, 1)
+                y_max_tar = torch.argmax(y_pred_X2, 1)
+                y_max_src_onehot = onehotembedding(y_max_src, num_classes=y_max_src.data.shape[0]).to(self.device)
+                y_max_tar_onehot = onehotembedding(y_max_tar, num_classes=y_max_tar.data.shape[0]).to(self.device)
+                #---aux_class_classifier_head
+                s_domain_output = self.aux_class_classifier(enc_X1_flattened, alpha_weight)
+                t_domain_output = self.aux_class_classifier(enc_X2_flattened, alpha_weight)
+                s_domain_pred, _ = torch.max(s_domain_output, 1)  # [n_classes]
+                t_domain_pred, _ = torch.max(t_domain_output, 1)
+                #---output criteria from two modules
+                #print(s_domain_pred.shape, y_max_src_onehot.shape)  # [bs], [bs, n_cls]
+                loss_s_domain = self.class_loss_func(y_max_src_onehot,
+                                                     s_domain_pred.to(dtype=torch.long)
+                                                     )
+                log_t_domain_label = torch.log(torch.clamp(1. - F.softmax(y_max_tar_onehot, dim=1), max=1.))
                 loss_t_domain = -F.nll_loss(log_t_domain_label,
-                                            t_domain_pred,
+                                            t_domain_pred.to(dtype=torch.long),
                                             reduction='mean',
                                             )
-                nu = 0.1    #following asymptonic value of coeff. is fixed from MDD prototype
-                tf_module_loss = nu * (loss_s_domain + loss_t_domain)
+                src_weight = 2. # weights in set of {2, 3, 4} following in their MDD studying
+                tf_module_loss = (src_weight * loss_s_domain) + loss_t_domain
 
             elif opt['tf_module_loss']=='mme':
                 #tf_module_loss_X1 = mme.adentropy(cosine_classifier, enc_X1_flattened, lamda=0.1)
