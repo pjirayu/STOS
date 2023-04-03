@@ -457,8 +457,8 @@ for epoch in tqdm.tqdm(range(opt['n_epoches'])):
                 #---aux_class_classifier_head
                 s_domain_output = self.aux_class_classifier(enc_X1_flattened, alpha_weight)
                 t_domain_output = self.aux_class_classifier(enc_X2_flattened, alpha_weight)
-                s_domain_pred, _ = torch.max(s_domain_output, 1)  # [n_classes]
-                t_domain_pred, _ = torch.max(t_domain_output, 1)
+                s_domain_pred = torch.argmax(s_domain_output, 1)  # [n_classes]
+                t_domain_pred = torch.argmax(t_domain_output, 1)
                 #---output criteria from two modules
                 #print(s_domain_pred.shape, y_max_src_onehot.shape)  # [bs], [bs, n_cls]
                 loss_s_domain = self.class_loss_func(y_max_src_onehot,
