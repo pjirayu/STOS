@@ -2,7 +2,7 @@
 
 ## Introduction
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [[article]](https://ieeexplore.ieee.org/document/10045719)
-###### <ins>Note</ins> all of this material is purely educational. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration.
+###### <ins>Note</ins> all of this material is for educational purposes only. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration. Furthermore, it is necessary to verify with the contributor in each proposed technique (e.g., SoftTriplet module and so on) for commercial use rights.
 
 ### Citation
 If you find this method helpful, please cite us.
