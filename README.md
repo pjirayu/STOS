@@ -2,6 +2,9 @@
 
 ## Introduction
 This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [[article]](https://ieeexplore.ieee.org/document/10045719)
+
+###### This work was supported in part by the “Center for Cyber-Physical System Innovation” from the Featured Areas Research Center Program within the framework of the Higher Education Sprout Project by the Ministry of Education in Taiwan.
+
 ###### <ins>Note</ins> all of this material is for educational purposes only. In the case of actual production, The authors cannot affirm or verify the outcomes based on data obtained outside of this demonstration. Furthermore, it is necessary to verify with the contributor in each proposed technique (e.g., SoftTriplet module and so on) for commercial use rights.
 
 ### Citation
@@ -23,11 +26,11 @@ If you find this method helpful, please cite us.
 ###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
 
 ### To utilize Spectral-CORAL and other related resources in the demonstration
-* Reproducible or reimplementable is by using the regarding function and any information in this repo (please read the license and policy, open and/or discuss the issues with us, and cite our paper). 
-* Once, the below exemplary algorithm is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
+* Reproducible is by using the given function and any information in this repo (please read the license and policy, open and/or discuss the issues with us, and cite our paper). 
+* Once, the below algorithm is using inferred outputs as inputs from both source and target domains calculated in our proposed function to obtain re-patterned covariance matrices for aligning.
 
-#### For simply re-structural (b=1) correlation alignment
-###### <ins>Note</ins> the testing was conducted with 3x3 toy covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
+#### To simply re-structural (b=1) correlation alignment
+###### <ins>Note</ins> the testing was conducted with 3x3, 4x4, and 5x5 artificial covariance matrices running on the CPU implementation for demonstration. The available results showed only the 1st iteration for Covsqrt and Spectralcov in [Colab](https://colab.research.google.com/drive/1GV9XwNr2ONMmCTTVkFGj-4P-RouCphCh#scrollTo=CrQgvne8fF0Y).
 ```python3
 def simplestrucCORAL(source, target):
     d = source.data.shape[1]
@@ -50,7 +53,7 @@ def simplestrucCORAL(source, target):
     loss = mean/(4*d*d)
     return loss
 ```
-#### For re-structural (With the number of b factors) correlation alignment
+#### To re-structure statistical representations (With the number of b factors) for re-structural correlation alignment
 ```python3
 def b_structure(Cov, order=1):
   # Initial
@@ -105,3 +108,4 @@ python main.py --model resnet50 --n_epoches 100 --n_target_samples 5 --batch_siz
 - 2022/08/14 - Pre-release of the batch training in adaptation task.
 - 2022/08/26 - Apache License 2.0 is included in this resource repository
 - 2023/02/16 - Article pre-released (Early access)
+- 2023/12/17 - Minor fixes and update information
