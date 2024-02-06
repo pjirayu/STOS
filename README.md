@@ -1,7 +1,7 @@
 # Project setup & training preparation guide
 
 ## Introduction
-This repository contains code for our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [[article]](https://ieeexplore.ieee.org/document/10045719)
+This repository contains code from our article **High-Intensified Resemblance and Statistic-Restructured Alignment in Few-Shot Domain Adaptation for Industrial-Specialized Employment**<br/> [[article]](https://ieeexplore.ieee.org/document/10045719)
 
 ###### This work was supported in part by the “Center for Cyber-Physical System Innovation” from the Featured Areas Research Center Program within the framework of the Higher Education Sprout Project by the Ministry of Education in Taiwan.
 
@@ -20,10 +20,10 @@ If you find this method helpful, please cite us.
 ```
 
 ## Setup
-* **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder and put into it.
+* **Dataset** can be downloaded here [Office-31](https://faculty.cc.gatech.edu/~judy/domainadapt/) then create a new "data" folder in the project directory and put into its.
 
 * **requirements** python==3.8, torch==1.9.0, torchvision==0.10.0, numpy==1.18.1
-###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not confirm how this would affect working this env. with other package versions.
+###### <ins>Note</ins> the considered environment runs on GPU with CUDA 11.1 and cuDNN 8.1 package versions. We can not affirm how this would affect working this env. with other package versions.
 
 ### To utilize Spectral-CORAL and other related resources in the demonstration
 * Reproducible is by using the given function and any information in this repo (please read the license and policy, open and/or discuss the issues with us, and cite our paper). 
@@ -34,20 +34,20 @@ If you find this method helpful, please cite us.
 ```python3
 def simplestrucCORAL(source, target):
     d = source.data.shape[1]
-    # Stardardization
+    # Standardization
     s_ = source - torch.mean(source, 0, keepdim=True)
     t_ = target - torch.mean(target, 0, keepdim=True)
-    # Normal correlation
+    # Initial covariance matrices
     simple_cov_s = s_ @ s_.t()
     simple_cov_t = t_ @ t_.t()
     # Re-structuring (b=1 only)
     I = torch.eye(int(simple_cov_s.shape[0]))
     D_s = torch.diag(torch.sub(I, torch.mm(s_, s_.t())))
     D_t = torch.diag(torch.sub(I, torch.mm(t_, t_.t())))
-    # Correlation matrix with b=1 factor structure
+    # Covariance matrices with b=1 factor structure
     cov_s = simple_cov_s + D_s
     cov_t = simple_cov_t + D_t
-    # Frobenius Norm
+    # Addressing nearness distances in Frobenius-norm space
     L2 = torch.mul((cov_s - cov_t), (cov_s - cov_t))
     mean = torch.mean(L2)
     loss = mean/(4*d*d)
